@@ -1,8 +1,10 @@
 package ru.javawebinar.topjava.repository.mock;
 
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.MealsUtil;
+import ru.javawebinar.topjava.util.UsersUtil;
 
 import java.util.Collection;
 import java.util.Map;
@@ -14,7 +16,10 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
     private AtomicInteger counter = new AtomicInteger(0);
 
     {
-        MealsUtil.MEALS.forEach(this::save);
+       for(User u: UsersUtil.USERS){
+           MealsUtil.MEALS.forEach(this::save);
+       }
+
     }
 
     @Override

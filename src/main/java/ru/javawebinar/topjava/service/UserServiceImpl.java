@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import ru.javawebinar.topjava.repository.UserRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFound;
@@ -39,7 +41,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        return repository.getAll();
+        List<User> lUsers=new ArrayList<>();
+        repository.getAll().stream().forEach(u->lUsers.add(u));
+        return lUsers;
     }
 
     @Override
